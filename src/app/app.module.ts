@@ -6,22 +6,31 @@ import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+
 import { MapComponent } from './components/map/map.component';
+import { MapEditComponent } from './components/map/map-edit.component';
 
 import { AgmCoreModule } from '@agm/core';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
+  entryComponents: [
+    MapEditComponent
+  ],
   declarations: [
     AppComponent,
-    MapComponent
+    MapComponent,
+    MapEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyANTfRiaTlLvrXVIQu9dn7mfOfINQm32TE'
+      apiKey: 'AIzaSyDNOu2JQ001PxZY-GVwFvVou0_6h_Sj-14' //AIzaSyANTfRiaTlLvrXVIQu9dn7mfOfINQm32TE
     })
   ],
   providers: [],
