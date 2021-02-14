@@ -3,8 +3,19 @@
     <mat-card-content>
         <!-- this creates a google map on the page with the given lat/lng from -->
         <!-- the component as the initial center of the map: -->
-        <agm-map [latitude]="lat" [longitude]="lng">
-            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        <agm-map (mapClick)="addMarker( $event )" [latitude]="lat" [longitude]="lng" [zoom]="15">
+            <agm-marker *ngFor="let marker of markers; let i = index" [latitude]="marker.lat" [longitude]="marker.lng">
+
+                <agm-info-window>
+                    <strong>{{ marker.title }}</strong>
+                    <p>{{ marker.desc }}</p>
+                    <div>
+                        <button (click)="editMarker(marker)" mat-raised-button color="primary">Editar</button>
+                        <button (click)="deleteMarker(i)" mat-raised-button color="warn">Borrar</button>
+                    </div>
+                </agm-info-window>
+
+            </agm-marker>
         </agm-map>
     </mat-card-content>
 </mat-card>
